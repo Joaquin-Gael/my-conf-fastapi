@@ -66,7 +66,7 @@ def view_config():
 @main.command()
 def build_config():
     config.build_config()
-    config.save_data()  # Guardar cualquier cambio en el archivo
+    config.save_data()
 
 if __name__ == '__main__':
     main()
