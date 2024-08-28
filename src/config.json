@@ -1,1 +1,1 @@
-{"gunicorn": false, "os": "Linux", "path": "/home/user/my-conf-fastapi/fastapi_base", "path_parent": "/home/user/my-conf-fastapi", "preact": true, "project_name": "fastapi_base", "uvicorn": true}
+{"gunicorn": false, "os": "Linux", "path": "/home/user/my-conf-fastapi/fastapi_base", "path_parent": "/home/user/my-conf-fastapi", "preact": false, "project_name": "fastapi_base", "uvicorn": true}

@@ -58,6 +58,14 @@ def set_config(path, name, preact, uvicorn, gunicorn) -> None:
         error_text = Text('Python no está instalado o no es la versión correcta.', style="bold red")
         console.print(error_text)
 
+@main.command()
+def reset_config():
+    config.set_path('')
+    config.set_name('')
+    config.set_preact(False)
+    config.set_uvicorn(True)
+    config.set_gunicorn(False)
+    config.save_data()
 
 @main.command()
 def view_config():
