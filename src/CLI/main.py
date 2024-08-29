@@ -14,9 +14,7 @@ console = Console()
 msg = pyfiglet.figlet_format('My Conf FastAPI')
 version = '1.0.0'
 
-# Crear una instancia de Config y cargar los datos previos
 config = Config(BASE_PAHT, 'default_project_name')
-config.load_data()  # Cargar los datos guardados previamente
 
 @click.group()
 @click.version_option(version=version, message=f"{msg}", show_choices=True)
@@ -29,6 +27,7 @@ def main():
 @click.option('--preact', '-pr', is_flag=True, help='Instalar preact')
 @click.option('--uvicorn', '-u', is_flag=True, help='Instalar uvicorn')
 @click.option('--gunicorn', '-g', is_flag=True, help='Instalar gunicorn')
+@click.option('--only-api', '-o', is_flag=True, help='Solo instalar api')
 def set_config(path, name, preact, uvicorn, gunicorn) -> None:
     npm_version = subprocess.run(['npm','--version'], capture_output=True, text=True)
     if npm_version:
@@ -46,6 +45,10 @@ def set_config(path, name, preact, uvicorn, gunicorn) -> None:
     if python_version:
         config.set_path(path)
         config.set_name(name)
+        if config.only_api:
+            config.set_api(True)
+        else:
+            config.set_api(False)
         config.print_table()
         config.save_data()  # Guardar los cambios
         resultado_venv = subprocess.run(['pip', 'list'], capture_output=True, text=True)
